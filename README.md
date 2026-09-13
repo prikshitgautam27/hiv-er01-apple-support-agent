@@ -19,28 +19,28 @@ Full write-up: [REPORT.md](REPORT.md) · Full decision history: [decision_log.md
                               │
                               ▼
                  ┌─────────────────────────┐
-                 │   1. Intent Classifier   │   Batched (10/call), Groq gpt-oss-120b
+                 │   1. Intent Classifier  │   Batched (10/call), Groq gpt-oss-120b
                  └─────────────────────────┘
                               │
                               ▼
                  ┌─────────────────────────┐
-                 │   2. RAG Retrieval       │   Local ChromaDB, top-3 historical matches
+                 │   2. RAG Retrieval      │   Local ChromaDB, top-3 historical matches
                  └─────────────────────────┘   Golden-set IDs excluded (no leakage)
                               │
                               ▼
                  ┌─────────────────────────┐
-                 │ 3. Deterministic Router  │   Rule-based, not LLM — auditable,
+                 │ 3. Deterministic Router │   Rule-based, not LLM — auditable,
                  └─────────────────────────┘   no hallucinated justification
                         │           │
                    [escalate]   [auto_handle]
                         │           │
                         ▼           ▼
                  ┌─────────────────────────┐
-                 │   4. Reply Draft-Gen     │   Grounded in step 2's retrieval,
+                 │   4. Reply Draft-Gen    │   Grounded in step 2's retrieval,
                  └─────────────────────────┘   hard-constrained by step 3's decision
                               │
                               ▼
-                    [ Intent + Routing + Reply ]
+               [ Intent + Routing + Reply ]
 ```
 
 **Why retrieval happens before routing, not after:** the router uses retrieval as a signal (e.g. "were similar past tweets historically handled via DM?"), so every tweet is retrieved first regardless of how it's ultimately routed.
