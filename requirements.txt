@@ -1,0 +1,9 @@
+polars
+pandas
+pydantic
+requests
+python-dotenv
+chromadb
+sentence-transformers
+scikit-learn
+scipy
