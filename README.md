@@ -91,9 +91,11 @@ Full write-up: [REPORT.md](REPORT.md) · Full decision history: [decision_log.md
 
 ```bash
 pip install -r requirements.txt
-cp .env.example .env   # then add your GROQ_API_KEY
 
-cd data_prep
+cd data
+cp ../.env.example .env   # then add your GROQ_API_KEY -- .env lives in data/, alongside the golden set and cache
+
+cd ../data_prep
 python prepare_data.py       # ~1-2 min: cleans raw twcs.csv
 python build_rag_index.py    # ~2-3 min: builds ChromaDB (first run downloads ~130MB embedding model)
 ```
