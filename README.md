@@ -5,7 +5,7 @@ An AI support agent for **@AppleSupport**, built on the [Customer Support on Twi
 For each incoming customer tweet, the agent:
 - Classifies intent into one of 6 categories derived from the data
 - Retrieves grounding from ~26K real historical AppleSupport replies (local RAG)
-- Decides auto-handle vs. escalate using deterministic rules (not an LLM)
+- Decides auto-handle vs. escalate using deterministic rules 
 - Drafts a reply, constrained by that routing decision
 
 Full write-up: [REPORT.md](REPORT.md) · Full decision history: [decision_log.md](decision_log.md)
